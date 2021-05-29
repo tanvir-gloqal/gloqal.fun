@@ -1,0 +1,61 @@
+<!-- initialise firebase in the project -->
+<!-- make a database and post user in that -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .click-box-initial {
+        opacity: 1;
+        transition: 0.2s opacity;
+      }
+      .click-box {
+        opacity: 0;
+        transition: 0.25s opacity;
+      }
+    </style>
+  </head>
+  <body onclick="clientClick(event)">
+    <img src="./bankblvd-website.png" alt="" style="width: 100%" />
+    <script src="https://prod-1.gloqal.co/widget/client"></script>
+    <div
+      id="click-box"
+      class="click-box-initial click-box"
+      style="
+        width: 10px;
+        height: 10px;
+        background-color: brown;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 0 3px #e78267;
+      "
+    ></div>
+    <script>
+      const clientClick = (e) => {
+        const box = document.getElementById("click-box");
+        if (box.classList.contains("click-box")) {
+          box.classList.remove("click-box");
+        }
+        const xPosition = e.offsetX;
+        const yPosition = e.offsetY;
+        box.style.top = `${yPosition}px`;
+        box.style.left = `${xPosition}px`;
+        setTimeout(() => {
+          box.classList.add("click-box");
+        }, 500);
+      };
+    </script>
+    <!-- MOBILE: DO NOT REMOVE, 192.168.0.200 is for mobile debugging -->
+    <!-- <script src="http://192.168.0.200:3003/client"></script> -->
+  </body>
+</html>
